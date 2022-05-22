@@ -1,0 +1,9 @@
+[core]
+	bare = true
+	repositoryformatversion = 0
+	filemode = true
+	ignorecase = true
+	precomposeunicode = true
+[remote "origin"]
+	url = git@github.com:kubkon/zig-wasi-tutorial.git
+	fetch = +refs/heads/*:refs/remotes/origin/*

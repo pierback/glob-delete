@@ -1,0 +1,12 @@
+pkgs:
+  args:
+    version: 0.0.0
+    description: delete whatever you like
+    license: MIT
+    root: src/main.zig
+deps:
+  clap:
+    git:
+      url: "https://github.com/Hejsil/zig-clap.git"
+      ref: ac5f46541ca47d3db9df0fcef3cc61731adaefab
+      root: clap.zig
