@@ -193,36 +193,9 @@ pub const Finder = struct {
 
         while (it.next()) |substr| {
             if (mem.indexOf(u8, path[pattern_length..], substr)) |index_of_substr| {
-                if (no_glob_start) {
-                    // pattern doesn't start with '*'
-                    // and the substring is found but is '0'
-                    // thus, the pattern doesn't match
-                    if (index_of_substr != 0) {
-                        return false;
-                    } else {
-                        // set no_glob_start to false to not check again
-                        no_glob_start = false;
-                        std.debug.print("no_glob_start = {}\n", .{no_glob_start});
-                    }
-                }
-
-                std.debug.print("current index = {}\n", .{pattern_length});
-                std.debug.print("index_of_substr = {}\n", .{index_of_substr});
-                std.debug.print("substr.len = {}\n", .{substr.len});
-
-                // build the new path by replacing the substring with the pattern (bar)
-                // but in terms of length /users/lib/foo/bars -> /users/lib/foo/bar
-                // var path_length = "/users/lib/foo/bars".len;
-                // var new_path = "/users/lib/foo/bar".len;
-                // if pattern is bar --> there will be no match because the path is too short
-                // if pattern is bar* --> there will be a match because there was match and due to the wildcard the lenght isn't the same relevant
-
                 pattern_length = pattern_length + index_of_substr + substr.len;
-                std.debug.print("new index = {}\n", .{pattern_length});
             } else return false;
         }
-
-        _ = no_glob_start;
 
         const path_lengths_matches = pattern_length == path.len;
         const ends_with_wildcard = pattern[pattern.len - 1] == '*';
