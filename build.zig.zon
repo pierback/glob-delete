@@ -1,0 +1,13 @@
+.{
+    .name = .zig_delete,
+    .version = "0.16.0",
+    .fingerprint = 0x7642a700963e5fab,
+    .minimum_zig_version = "0.16.0",
+    .dependencies = .{},
+    .paths = .{
+        "LICENSE",
+        "build.zig",
+        "build.zig.zon",
+        "src",
+    },
+}
